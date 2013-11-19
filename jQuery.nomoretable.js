@@ -3,7 +3,7 @@
     $.fn.nomoretable = function(options)
     {
         var defaults = {
-        	"tablediv": "table",
+        	"tableclass": "table",
         	"maxwidth": 700
         };
         var opts = $.extend(defaults, options);
@@ -16,9 +16,9 @@
 	    		if(windowWidth < opts.maxwidth){
 					var text = new Array();
 					var ths = 0;
-					jQuery(opts.tablediv).each(function(table)
+					jQuery(opts.tableclass).each(function(table)
 					{
-						jQuery(opts.tablediv).addClass("nomoretable");
+						jQuery(opts.tableclass).addClass("nomoretable");
 						ths = 0;
 						jQuery(this).find("th").each(function(index){
 							text[index] = jQuery(this).text();
@@ -40,7 +40,7 @@
 						});
 					});
 				}else{
-					jQuery(opts.tablediv).removeClass("nomoretable");
+					jQuery(opts.tableclass).removeClass("nomoretable");
 				}
 			});
         });

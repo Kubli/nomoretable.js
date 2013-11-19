@@ -52,4 +52,11 @@ What you will need
 How to use
 ==========
 
-$("body").nomoretable({"tableclass":".classNameOfTable"});
+$().nomoretable({"tableclass":".classNameOfTable", "maxwidth":breakpoint});
+
+Example
+=========
+$("body").nomoretable({"tableclass":".myTables", "maxwidth":400});
+
+All tables in "body" with the class "myTables" will automatic become "nomoretables", when the
+width of the target device is smaller then 400px. 
