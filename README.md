@@ -10,8 +10,8 @@ What you will need
 
 2. You need a Table with the following structure:
 
-<![CDATA[
-<table class="anyClassName">
+
+`<table class="anyClassName">
 	<thead>
 		<th>First Column</th>
 		<th>Second Column</th>
@@ -29,9 +29,8 @@ What you will need
 			<td>Field 2,3</td>
 		</tr>
 	</tbody>
-</table>
-]]>
-"<table class="anyClassName">
+</table>`
+<table class="anyClassName">
 	<thead>
 		<th>First Column</th>
 		<th>Second Column</th>
