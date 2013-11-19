@@ -30,6 +30,26 @@ What you will need
 	</tbody>
 </table>
 
+"<table class="anyClassName">
+	<thead>
+		<th>First Column</th>
+		<th>Second Column</th>
+		<th>Third Column</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Field 1,1</td>
+			<td>Field 1,2</td>
+			<td>Field 1,3</td>
+		</tr>
+		<tr>
+			<td>Field 2,1</td>
+			<td>Field 2,2</td>
+			<td>Field 2,3</td>
+		</tr>
+	</tbody>
+</table>"
+
 How to use
 ==========
 
