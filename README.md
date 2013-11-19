@@ -10,6 +10,7 @@ What you will need
 
 2. You need a Table with the following structure:
 
+<![CDATA[
 <table class="anyClassName">
 	<thead>
 		<th>First Column</th>
@@ -29,7 +30,7 @@ What you will need
 		</tr>
 	</tbody>
 </table>
-
+]]>
 "<table class="anyClassName">
 	<thead>
 		<th>First Column</th>
