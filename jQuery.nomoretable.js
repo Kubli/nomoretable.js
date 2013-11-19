@@ -1,44 +1,48 @@
-(function($){
-    $.fn.nomoretable = function(options){
-    	//Defaultsettings
+(function($)
+{
+    $.fn.nomoretable = function(options)
+    {
         var defaults = {
-        	"tableclass": "table" //Which tables should be nomoretables?
-        	/*",maxwidth": 700 //Breakpoint, when window-width is smaller than this number, the selected tables become "nomoretable"*/
+        	"tablediv": "table",
+        	"maxwidth": 700
         };
         var opts = $.extend(defaults, options);
-        return this.each(function(){
+        var style = ".nomoretable, .nomoretable thead, .nomoretable tbody, .nomoretable th, .nomoretable td, .nomoretable tr{display: block;}.nomoretable thead tr{position: absolute;top: -9999px;left: -9999px;}.nomoretable tr{border: 1px solid black;}.nomoretable td{border: none;border-bottom: 1px solid grey;position: relative;padding-left: 50%;white-space: normal;text-align: left;}.nomoretable td:before{position: absolute;top: 6px;left: 6px;width: 45%;padding-right: 10px;white-space: nowrap;text-align: left;font-weight: bold;}.nomoretable td:before{content: attr(data-title);}";
+	    return this.each(function()
+	    {
+			jQuery('head').append('<style>'+style+'</style>');
+	    	jQuery(window).on("resize", function(){
+	    		var windowWidth = $(window).width();
+	    		if(windowWidth < opts.maxwidth){
+					var text = new Array();
+					var ths = 0;
+					jQuery(opts.tablediv).each(function(table)
+					{
+						jQuery(opts.tablediv).addClass("nomoretable");
+						ths = 0;
+						jQuery(this).find("th").each(function(index){
+							text[index] = jQuery(this).text();
+							ths = ths + 1;
+						});
 
-        	//CSS for the selected Tables
-        	jQuery(opts.tableclass).css({"display": "block"});
-        	jQuery(opts.tableclass).find("table,thead, tbody, th, td, tr").css({"display": "block"});
-        	jQuery(opts.tableclass).find("thead tr").css({"position": "absolute","top":"-9999px","left":"-9999px"});
-        	jQuery(opts.tableclass).find("tr").css({"border": "1px solid black"});
-        	jQuery(opts.tableclass).find("table, td").css({"border": "none","border-bottom":"1px solid grey","position":"relative","padding-left":"50%","white-space":"normal","text-align":"left"});
-       		jQuery('head').append('<style>'+opts.tableclass+' td:before{position: absolute;top: 6px;left: 6px;width: 45%;padding-right: 10px;white-space: nowrap;text-align: left;font-weight: bold;content: attr(data-title);}</style>');
+						var i=0;
 
-			var text = new Array();
-			var ths = 0;
-			//goes truth all selected Tables
-			jQuery(opts.tableclass).each(function(table){
-				ths = 0; //Number of <th> Elements in the Table
-				jQuery(this).find("th").each(function(index){
-					text[index] = jQuery(this).text(); //Gets the Content of the <th> Element and saves it in an Array
-					ths = ths + 1;
-			});
-
-			var i=0; //Row in the Table
-
-			jQuery(this).find("td").each(function(index){
-				if(i>=ths){ //When the value gets bigger then the number of Rows, reset Value
-					i=0;
-				}
-				if(jQuery(this).text() == "" || jQuery(this).text() == null){ //Only set data-title when the field isn't empty
+						jQuery(this).find("td").each(function(index)
+						{
+							if(i>=ths){
+							i=0;
+							}
+							if(jQuery(this).text() == "" || jQuery(this).text() == null){
+							}else{
+							jQuery(this).attr('data-title',text[i]);
+							i = i+1;
+							}
+						});
+					});
 				}else{
-				jQuery(this).attr('data-title',text[i]); //Set the content of the <th> Element as data-title
-				i = i+1;
+					jQuery(opts.tablediv).removeClass("nomoretable");
 				}
 			});
-		});
         });
     };
 })(jQuery);
