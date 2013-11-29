@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test NoMoreTable.js</title>
+	<!--<link rel="stylesheet" type="text/css" media="all" href="style.css">-->
+	<script src="jquery-1.10.2.min.js"></script>
+	<script src="jQuery.nomoretable.js"></script>
+
+	<script>
+	$(window).load(function(){
+		$(this).nomoretable({"tablediv":"#nomoreTable","maxwidth":1000});
+	});
+	</script>
+</head>
+<body>
+	<table id="nomoreTable">
+		<thead>
+			<th>Vorname</th>
+			<th>Nachname</th>
+			<th>Wohnort</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Martin</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+			<tr>
+				<td>Dejan</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Kathy</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+		</tbody>
+	</table>
+	<table id="normaltable">
+		<thead>
+			<th>Vorname</th>
+			<th>Nachname</th>
+			<th>Wohnort</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Martin</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+			<tr>
+				<td>Dejan</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+			<tr>
+				<td>Kathy</td>
+				<td>Kubli</td>
+				<td>Winterthur</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
