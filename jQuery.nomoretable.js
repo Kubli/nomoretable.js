@@ -21,11 +21,13 @@ THE SOFTWARE.*/
 {
 
 
+	
     $.fn.nomoretable = function(options)
     {
         var defaults = {
         	"tableclass": "table",
-        	"maxwidth": 700
+        	"maxwidth": 700,
+        	"customcss": 0
         };
         var opts = $.extend(defaults, options);
         var style = ".nomoretable{border-collapse:separate;} .hide{display:none !important;border:none;} .nomoretable, .nomoretable thead, .nomoretable tbody, .nomoretable th, .nomoretable td, .nomoretable tr{display: block;}.nomoretable thead tr{position: absolute;top: -9999px;left: -9999px;}.nomoretable tr{border: 1px solid black;}.nomoretable td{border: none;border-bottom: 1px solid grey;position: relative;padding-left: 50%;white-space: normal;text-align: left;}.nomoretable td:before{position: absolute;top: 6px;left: 6px;width: 45%;padding-right: 10px;white-space: nowrap;text-align: left;font-weight: bold;}.nomoretable td:before{content: attr(data-title);}";
@@ -36,83 +38,55 @@ THE SOFTWARE.*/
 	    return this.each(function()
 	    {
 
-	    		if(windowWidth < opts.maxwidth){
-	    			console.log("breakpoint erfüllt");
-					var text = new Array();
-					var ths = 0;
-					$(opts.tableclass).each(function(table)
-					{
-						$(opts.tableclass).addClass("nomoretable");
-						ths = 0;
-						$(this).find("th").each(function(index){
-							text[index] = $(this).text();
-							ths = ths + 1;
-						});
-
-						var i=0;
-
-						$(this).find("td").each(function(index)
-						{
-							if(i>=ths){
-							i=0;
-							}
-							if($(this).text() == "" || $(this).text() == null){
-								$(this).parent().addClass("hide");
-								$(this).addClass("hide");
-							}else{
-								$(this).attr('data-title',text[i]);
-							i = i+1;
-							}
-						});
-					});
-					firstTime = 0;
-				}else{
-					$(opts.tableclass).removeClass("nomoretable");
-					$("body").find(".hide").removeClass("hide");
-					firstTime = 1;
-				}
-			$('head').append('<style>'+style+'</style>');
-	    	mywindow.on("resize", function(){
-	    		windowWidth = mywindow.width();
-	    		if(windowWidth < opts.maxwidth){
-	    			if(firstTime == 1){
-	    			console.log("breakpoint erreicht");
-					var text = new Array();
-					var ths = 0;
-					$(opts.tableclass).each(function(table)
-					{
-						$(opts.tableclass).addClass("nomoretable");
-						ths = 0;
-						$(this).find("th").each(function(index){
-							text[index] = $(this).text();
-							ths = ths + 1;
-						});
-
-						var i=0;
-
-						$(this).find("td").each(function(index)
-						{
-							if(i>=ths){
-							i=0;
-							}
-							if($(this).text() == "" || $(this).text() == null){
-								$(this).parent().addClass("hide");
-								$(this).addClass("hide");
-							}else{
-								$(this).attr('data-title',text[i]);
-							i = i+1;
-							}
-						});
-					});
-					firstTime = 0;
-				}
-				}else{
-					console.log("breakpoint verlassen");
-					$(opts.tableclass).removeClass("nomoretable");
-					$("body").find(".hide").removeClass("hide");
-					firstTime = 1;
-				}
+			//No Custom css set -> Append default CSS to header
+			if(opts.customcss == 0){
+				$('head').append('<style>'+style+'</style>');
+			}
+			changeTables();
+	    	mywindow.on("resize", function()
+	    	{
+	    		changeTables();
 			});
         });
+		function changeTables()
+		{
+			windowWidth = mywindow.width();
+			if(windowWidth < opts.maxwidth){
+				console.log("breakpoint erfüllt");
+				var text = new Array();
+				var ths = 0;
+				$(opts.tableclass).each(function(table)
+				{
+					$(opts.tableclass).addClass("nomoretable");
+					ths = 0;
+					$(this).find("th").each(function(index){
+						text[index] = $(this).text();
+						ths = ths + 1;
+					});
+
+					var i=0;
+
+					$(this).find("td").each(function(index)
+					{
+						if(i>=ths){
+						i=0;
+						}
+						if($(this).text() == "" || $(this).text() == null){
+							$(this).parent().addClass("hide");
+							$(this).addClass("hide");
+						}else{
+							$(this).attr('data-title',text[i]);
+						i = i+1;
+						}
+					});
+				});
+				firstTime = 0;
+			}else{
+				$(opts.tableclass).removeClass("nomoretable");
+				$("body").find(".hide").removeClass("hide");
+				firstTime = 1;
+			}
+
+		}
     };
 })($);

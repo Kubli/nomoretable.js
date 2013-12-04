@@ -1,37 +1,4 @@
 @media (max-width: 700px) {
-table, thead, tbody, th, td, tr{
-	display: block;
-}
-thead tr{
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
-}
-tr{
-	border: 1px solid black;
-}
-table td{
-	border: none;
-	border-bottom: 1px solid grey;
-	position: relative;
-	padding-left: 50%;
-	white-space: normal;
-	text-align: left;
-
-}
-td:before{
-	position: absolute;
-	top: 6px;
-	left: 6px;
-	width: 45%;
-	padding-right: 10px;
-	white-space: nowrap;
-	text-align: left;
-	font-weight: bold;
-}
-
-td:before{
-	content: attr(data-title);
-}
+.nomoretable{border-collapse:separate;} .hide{display:none !important;border:none;} .nomoretable, .nomoretable thead, .nomoretable tbody, .nomoretable th, .nomoretable td, .nomoretable tr{display: block;}.nomoretable thead tr{position: absolute;top: -9999px;left: -9999px;}.nomoretable tr{border: 1px solid blue;}.nomoretable td{border: none;border-bottom: 1px solid grey;position: relative;padding-left: 50%;white-space: normal;text-align: left;}.nomoretable td:before{position: absolute;top: 6px;left: 6px;width: 45%;padding-right: 10px;white-space: nowrap;text-align: left;font-weight: bold;}.nomoretable td:before{content: attr(data-title);}";
 
 }
