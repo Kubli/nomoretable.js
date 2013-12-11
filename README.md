@@ -60,4 +60,4 @@ Example
 $("body").nomoretable({"tableclass":".myTables", "maxwidth":400, "customcss": 1});
 
 All tables in "body" with the class "myTables" will automatic become "nomoretables", when the
-width of the target device is smaller then 400px. Also i don't want to use the default styling, because I have a custom one (customcss:1).
+width of the target device is smaller then 400px. Also I don't want to use the default styling, because I have a custom one (customcss:1).
