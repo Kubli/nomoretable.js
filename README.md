@@ -49,14 +49,15 @@ What you will need
 		</tr>
 	</tbody>
 </table>
-How to use
+Default use
 ==========
 
-$().nomoretable({"tableclass":".classNameOfTable", "maxwidth":breakpoint});
+$("body").nomoretable({"tableclass":"table", "maxwidth":700, "customcss": 0});
+Changes all tables in body after a breakpoint of 700px is reached and using default style from script (overwrites your styling options on class "nomoretable" if you should have any).
 
 Example
 =========
-$("body").nomoretable({"tableclass":".myTables", "maxwidth":400});
+$("body").nomoretable({"tableclass":".myTables", "maxwidth":400, "customcss": 1});
 
 All tables in "body" with the class "myTables" will automatic become "nomoretables", when the
-width of the target device is smaller then 400px. 
+width of the target device is smaller then 400px. Also i don't want to use the default styling, because I have a custom one (customcss:1).
